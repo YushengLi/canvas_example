@@ -1,9 +1,27 @@
 service: Canvas
 
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs8.10
 
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packager: yarn
+
+package:
+  individually: true
+
+
 functions:
   hello:
-    handler: handler.hello
+    handler: handlers/hello.hello
+    events:
+      - http:
+         path: hello
+         method: get
