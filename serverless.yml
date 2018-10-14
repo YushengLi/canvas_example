@@ -19,9 +19,16 @@ package:
 
 
 functions:
-  hello:
-    handler: handlers/hello.hello
+  # hello:
+  #   handler: handlers/hello.hello
+  #   events:
+  #     - http:
+  #        path: hello
+  #        method: get
+
+  roundedSquare:
+    handler: handlers/roundedSquare.roundedSquare
     events:
       - http:
-         path: hello
+         path: rounded_square
          method: get
