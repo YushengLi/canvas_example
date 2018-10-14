@@ -3,6 +3,8 @@ service: Canvas
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
 
 provider:
   name: aws
@@ -13,6 +15,10 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
     packager: yarn
+  apigwBinary:
+    types:           #list of mime-types
+      - 'image/png'
+      - '*/*'
 
 package:
   individually: true
@@ -32,3 +38,4 @@ functions:
       - http:
          path: rounded_square
          method: get
+         contentHandling: CONVERT_TO_BINARY
